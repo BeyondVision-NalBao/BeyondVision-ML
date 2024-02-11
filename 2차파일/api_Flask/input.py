@@ -37,4 +37,4 @@ if __name__ == '__main__':
 #@app.route("/<long:memberId>/<long:routineDetailId>/frame", method=['POST'])
 #def frame(memberId, routineDetailId):
 #  output.save(camera.gen(images))
-    
+

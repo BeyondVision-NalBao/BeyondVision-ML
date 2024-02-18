@@ -39,6 +39,7 @@ def setting(exCode):
 
 
 def bridge_up1(keypoint):
+    global message
     knee= (keypoint[13]+keypoint[14])/2
     pelvis=(keypoint[11+keypoint[12]])/2
     
@@ -61,6 +62,7 @@ def bridge_up1(keypoint):
 def bridge_up2(keypoint):
     pelvis=(keypoint[11+keypoint[12]])/2
     value=10
+    global message
 
     # 골반 - 척추 중- 척추상
     angle = getDegree(pelvis, keypoint[18], keypoint[17])
@@ -80,6 +82,7 @@ def bridge_up2(keypoint):
 def bridge_down(keypoint):
     knee= (keypoint[13]+keypoint[14])/2
     pelvis=(keypoint[11+keypoint[12]])/2
+    global message
     
     # 무릎-골반-척추 중
     angle = getDegree(knee, pelvis, keypoint[18])
@@ -139,6 +142,7 @@ def bridge_count(keypoint):
 
 
 def counting(keypoint):
+    global message
     if bridge_count(keypoint):
         global CNT
         CNT += 1

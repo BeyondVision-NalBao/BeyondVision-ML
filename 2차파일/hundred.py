@@ -29,6 +29,7 @@ def setting(exCode):
 
 
 def hunbred_first(keypoint):
+    global message
     first_pelvis=(keypoint[11],keypoint[12])/2
     first_knee=(keypoint[13],keypoint[14]/2)
     first_angle = getDegree(keypoint[18],first_pelvis,first_knee)
@@ -43,6 +44,7 @@ def hunbred_first(keypoint):
 
 
 def hunbred_second(keypoint):
+    global message
     second_ear=(keypoint[3],keypoint[4])
     second_angle = getDegree(second_ear,keypoint[17],keypoint[18])
     value = 15
@@ -61,6 +63,7 @@ def hunbred_second(keypoint):
 
 
 def hunbred_third(keypoint):
+    global message
     value=5
     if pelvis[0]-value <= wrist[0] <= pelvis[0]+value:
         return True

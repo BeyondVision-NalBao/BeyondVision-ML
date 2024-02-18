@@ -8,7 +8,7 @@
 #횟수 설정하기
 print('this is test message ')
 def selectExercise(name, memberId, count='30'): #경원이가 디폴트 30으로 해놓으라고 했음 ㅎㅎ
-    global exerciseCode, countNumber
+    global exerciseCode, countNumber, member_id, WorkOutName
     if name=='스쿼트':
         exerciseCode = 1
     elif name=='숄더프레스':
@@ -27,7 +27,8 @@ def selectExercise(name, memberId, count='30'): #경원이가 디폴트 30으로
         exerciseCode = 8
     
     countNumber = int(count)
-    print(memberId)
+    member_id=memberId
+    WorkOutName=name
     return str(exerciseCode)
         
     

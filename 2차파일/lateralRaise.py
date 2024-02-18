@@ -40,6 +40,7 @@ def setting(exCode):
 
 
 def raiseDown(keypoint):
+    global message
     # keypoint[5] : 왼쪽 어깨, keypoint[7] : 왼쪽 팔꿈치, keypoint[9] : 왼쪽 손목
     # keypoint[6] : 오른쪽 어깨, keypoint[8] : 오른쪽 팔꿈치, keypoint[10] : 오른쪽 손목
     left_slope = abs((keypoint[5][0]-keypoint[9][0]) /
@@ -73,6 +74,7 @@ def raiseDown(keypoint):
 
 
 def raiseUp(keypoint):
+    global message
     # keypoint[5] : 왼쪽 어깨, keypoint[7] : 왼쪽 팔꿈치, keypoint[9] : 왼쪽 손목
     # keypoint[6] : 오른쪽 어깨, keypoint[8] : 오른쪽 팔꿈치, keypoint[10] : 오른쪽 손목
     left_slope = abs((keypoint[9][0]-keypoint[5][0]) /
@@ -107,6 +109,7 @@ def raiseUp(keypoint):
 
 
 def postureCorrection(keypoint):
+    global message
     if(raiseUp(keypoint)):
         
         message = "레터럴 레이즈 자세를 잘 잡으셨어요!"
@@ -116,6 +119,7 @@ def postureCorrection(keypoint):
 
 
 def lateralRaise_count(keypoint):
+    global message
     left_slope = abs((keypoint[9][0]-keypoint[5][0]) /
                      (keypoint[9][1]-keypoint[5][1]))
     right_slope = abs((keypoint[10][0]-keypoint[6]
@@ -142,6 +146,7 @@ def lateralRaise_count(keypoint):
 
 
 def counting(keypoint):
+    global message
     if lateralRaise_count(keypoint):
         global CNT
         CNT += 1

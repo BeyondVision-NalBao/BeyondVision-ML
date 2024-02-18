@@ -1,6 +1,6 @@
 import math
 import imageDetect
-from speechRecognition import tts
+#from speechRecognition import tts
 
 CNT = 0
 
@@ -25,6 +25,7 @@ def setting(exCode):
 
 
 def squat_down(keypoint):
+    global message
     # keypoint[11][0] : 왼쪽 골반 y좌표, keypoint[13][0] : 왼쪽 무릎 y좌표
     # keypoint[12][0] : 오른쪽 골반 y좌표, keypoint[14][0] : 오른쪽 무릎 y좌표
     hip_knee_l = keypoint[11][0] - keypoint[13][0]
@@ -48,6 +49,7 @@ def squat_down(keypoint):
 
 
 def squat_straight(keypoint):
+    global message
     # keypoint[17] : 척수상, keypoint[18] : 척수중, keypoint[19] : 척추하
     value = 5
     angle = getDegree(keypoint[17], keypoint[18], keypoint[19])
@@ -65,6 +67,7 @@ def squat_straight(keypoint):
 
 
 def squat_knee_angle(keypoint):
+    global message
     # keypoint[12] : 오른쪽골반, keypoint[14] : 오른쪽무릎, keypoint[16] : 오른쪽발목
     # keypoint[11] : 왼쪽골반, keypoint[13] : 왼쪽무릎, keypoint[15] : 왼쪽발목
     right_angle = getDegree(keypoint[12], keypoint[14], keypoint[16])
@@ -105,6 +108,7 @@ def postureCorrection(keypoint):
 
 
 def counting(keypoint):
+    global message
     if squat_count(keypoint):
         global CNT
         CNT += 1

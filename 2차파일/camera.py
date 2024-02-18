@@ -50,7 +50,7 @@ class VideoCamera(object):
 
 
 def gen(camera):
-    global message
+    global message,START,END
     with tf.compat.v1.Session() as sess:
         model_cfg, model_outputs = posenet.load_model(args['model'], sess)
         output_stride = model_cfg['output_stride']
@@ -115,6 +115,7 @@ def gen(camera):
             if cnt == 1:
                 
                 message = "잠시후에 시작합니다. 자리를 잡아주세요."
+                START=time.time()
 
             if cnt % cycle == 0:
                 if init:
@@ -276,7 +277,9 @@ def gen(camera):
                             if squat.CNT == ready.countNumber:
                                 message = "스쿼트" + str(ready.countNumber) +" 회를 마쳤습니다. 수고하셨습니다."
                                 squat.CNT = 0
-                                output.exercise_output(member_id, exercise_name, exercise_count, exercise_time)
+                                END=time.time()
+                                TotalTime=round(START-END,3)
+                                output.exercise_output(ready.member_id, ready.WorkOutName, ready.countNumber, TotalTime) #member_id, exercise_name, exercise_count, exercise_time
                                 finish = True
                     elif exerciseCode == 2:
                         if cnt == 33:
@@ -285,6 +288,9 @@ def gen(camera):
                             if shoulderPress.CNT == ready.countNumber:
                                 message = "숄더프레스" + str(ready.countNumber) + " 회를 마쳤습니다. 수고하셨습니다."
                                 shoulderPress.CNT = 0
+                                END=time.time()
+                                TotalTime=round(START-END,3)
+                                output.exercise_output(ready.member_id, ready.WorkOutName, ready.countNumber, TotalTime)
                                 finish = True
                     elif exerciseCode == 3:
                         if cnt == 33:
@@ -293,6 +299,9 @@ def gen(camera):
                             if lateralRaise.CNT == ready.countNumber:
                                 message = "레터럴레이즈" + str(ready.countNumber) + " 회를 마쳤습니다. 수고하셨습니다."
                                 lateralRaise.CNT = 0
+                                END=time.time()
+                                TotalTime=round(START-END,3)
+                                output.exercise_output(ready.member_id, ready.WorkOutName, ready.countNumber, TotalTime)
                                 finish = True
                     elif exerciseCode == 6:
                         if cnt == 33:
@@ -301,6 +310,9 @@ def gen(camera):
                             if front_raise.CNT == ready.countNumber:
                                 message = "프론트 레이즈" + str(ready.countNumber) + " 회를 마쳤습니다. 수고하셨습니다."
                                 lateralRaise.CNT = 0
+                                END=time.time()
+                                TotalTime=round(START-END,3)
+                                output.exercise_output(ready.member_id, ready.WorkOutName, ready.countNumber, TotalTime)
                                 finish = True
                     elif exerciseCode == 7:
                         if cnt == 33:
@@ -309,6 +321,9 @@ def gen(camera):
                             if zup.CNT == ready.countNumber:
                                 message = "제트 업" + str(ready.countNumber) + " 회를 마쳤습니다. 수고하셨습니다."
                                 zup.CNT = 0
+                                END=time.time()
+                                TotalTime=round(START-END,3)
+                                output.exercise_output(ready.member_id, ready.WorkOutName, ready.countNumber, TotalTime)
                                 finish = True
                     elif exerciseCode == 8:
                         if cnt == 33:
@@ -317,15 +332,24 @@ def gen(camera):
                             if bridge.CNT == ready.countNumber:
                                 message = "레터럴레이즈" + str(ready.countNumber) + " 회를 마쳤습니다. 수고하셨습니다."
                                 bridge.CNT = 0
+                                END=time.time()
+                                TotalTime=round(START-END,3)
+                                output.exercise_output(ready.member_id, ready.WorkOutName, ready.countNumber, TotalTime)
                                 finish = True
                     elif exerciseCode == (4 or 5):
                         if exerciseCode ==4:
                             time.sleep(30)
                             message ="헌드레드를"+ str(ready.countNumber) + "초 동안 하셨습니다. 수고하셨습니다."
+                            END=time.time()
+                            TotalTime=round(START-END,3)
+                            output.exercise_output(ready.member_id, ready.WorkOutName, ready.countNumber, TotalTime)
                             finish = True
                         elif exerciseCode ==5:
                             time.sleep(30)
                             message ="플랭크를"+ str(ready.countNumber) + "초 동안 하셨습니다. 수고하셨습니다."
+                            END=time.time()
+                            TotalTime=round(START-END,3)
+                            output.exercise_output(ready.member_id, ready.WorkOutName, ready.countNumber, TotalTime)
                             finish = True
                     #스트레칭은 여기서 할게 아닌것 같아서 안함.....
 

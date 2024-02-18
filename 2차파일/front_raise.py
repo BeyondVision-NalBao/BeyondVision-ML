@@ -40,6 +40,7 @@ def setting(exCode):
 
 
 def leg_position(keypoint):
+    global message
     right_leg = keypoint[6][1]-keypoint[16][1]
     left_leg = keypoint[5][1]-keypoint[15][1]
     value=10
@@ -80,6 +81,7 @@ def leg_position(keypoint):
         
     
 def raiseup(keypoint):
+    global message
     # 손목- 어께
     left = keypoint[5][0]-keypoint[9][0]
     right = keypoint[6][0]-keypoint[10][0]
@@ -124,6 +126,7 @@ def raiseup(keypoint):
 
 
 def raisesDown(keypoint):
+    global message
     # 손목- 골반
     left = abs(keypoint[5][0]-keypoint[11][0])
     right = abs(keypoint[6][0]-keypoint[12][0])
@@ -149,6 +152,7 @@ def raisesDown(keypoint):
 
 
 def front_raise_count(keypoint): #이거 계산 또 해야하는거냐? 아오 귀찮아
+    global message
     #팔을 들었으면 count로 check
     left = keypoint[5][0]-keypoint[9][0]
     right = keypoint[6][0]-keypoint[10][0]
@@ -173,6 +177,7 @@ def front_raise_count(keypoint): #이거 계산 또 해야하는거냐? 아오 �
 
 
 def counting(keypoint):
+    global message
     if front_raise_count(keypoint):
         global CNT
         CNT += 1

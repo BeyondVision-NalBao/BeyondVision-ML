@@ -1,6 +1,6 @@
 import math
 import imageDetect
-from speechRecognition import tts
+#from speechRecognition import tts
 import time
 
 CNT = 0
@@ -49,6 +49,7 @@ def setting(exCode):
 
 
 def zup_up1(keypoint):
+    global message
     ear = (keypoint[3]+keypoint[4])/2
     
     # 귀-척추 상- 척추 중
@@ -68,6 +69,7 @@ def zup_up1(keypoint):
 
 
 def zup_up2(keypoint):
+    global message
     pelvis=(keypoint[11]+keypoint[12])/2
     value=10
 
@@ -86,6 +88,7 @@ def zup_up2(keypoint):
         return False
     
 def zup_up3(keypoint):
+    global message
     pelvis=(keypoint[11]+keypoint[12])/2
     knee=(keypoint[13]+keypoint[14])/2
     value= 20
@@ -102,6 +105,7 @@ def zup_up3(keypoint):
 
 
 def zup_down1(keypoint):
+    global message
     ear = (keypoint[3]+keypoint[4])/2
     
     # 귀-척추 상- 척추 중
@@ -121,6 +125,7 @@ def zup_down1(keypoint):
 
 
 def zup_down2(keypoint):
+    global message
     pelvis=(keypoint[11]+keypoint[12])/2
     value=10
 
@@ -139,6 +144,7 @@ def zup_down2(keypoint):
         return False
     
 def zup_down3(keypoint):
+    global message
     pelvis=(keypoint[11]+keypoint[12])/2
     knee=(keypoint[13]+keypoint[14])/2
     value= 20
@@ -217,6 +223,7 @@ def zup_count(keypoint):
 
 
 def counting(keypoint):
+    global message
     if zup_count(keypoint):
         global CNT
         CNT += 1

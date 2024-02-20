@@ -52,13 +52,13 @@ def selectExercise(name, memberId, count='30'): #경원이가 디폴트 30으로
         bridge.setting(8)
     elif name=='스트레칭1':
         exerciseCode = 9
-        bridge.setting(9)
+        stretching4.setting(9)
     elif name=='스트레칭2':
         exerciseCode = 10
-        bridge.setting(10)
+        stretching5.setting(10)
     elif name=='스트레칭3':
         exerciseCode = 11
-        bridge.setting(11)
+        stretching10.setting(11)
     
     countNumber = int(count)
     member_id=memberId
